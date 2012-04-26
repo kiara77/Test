@@ -22,7 +22,10 @@ public class BoolArray{
 			i++;
 		}
 	}
-
+	
+	public boolean[][] getGrid(){
+		return grid;
+	}
 	public boolean getCell(int i, int j){
 		return grid[i][j];
 	}
