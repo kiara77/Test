@@ -1,10 +1,14 @@
+import java.io.FileNotFoundException;
+
 
 public class LevelState {
 	Space space;
 	
-	public Space spaceFromFile(int levelNumber){
+	public LevelState(int numLevel) throws FileNotFoundException{
+		space = spaceFromFile(numLevel);
+	}
+	public Space spaceFromFile(int numLevel) throws FileNotFoundException{
 		FactorySpace factory = new FactorySpace(true);
-		Space a = factory.getConfigurationSpace();
-		return a;
+		return factory.getConfigurationSpace(numLevel);
 	}
 }

@@ -1,8 +1,17 @@
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
+import javax.swing.JPanel;
 
-public interface Space {
-	public boolean function1();
+
+public abstract class Space {
 	
-
+	Shape shape;
+	Ball ball;
+	
+	Space(){
+		ball = new Ball();
+		shape=new Shape();
+	}
+	public abstract JPanel returnJPanel();
 }

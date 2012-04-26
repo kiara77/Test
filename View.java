@@ -3,6 +3,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class View extends JFrame{
@@ -15,11 +16,10 @@ public class View extends JFrame{
 	protected Rectangle maxWindowBounds=graphicsEnv.getMaximumWindowBounds();//get maximum window bounds
 	protected int hauteur = (int)maxWindowBounds.getHeight();
 	protected int largeur = (int)maxWindowBounds.getWidth();
-	JPanelDraw panel;
-	boolean [][] obstaclesTab;
+	JPanel jp;
 
-	public View(boolean [][] tab){
-		obstaclesTab = tab;
+	public View(JPanel jp){
+		this.jp=jp;
 		super.setTitle("Projet Long");
 		super.setSize(largeur,hauteur);
 		super.setResizable(true);
@@ -28,8 +28,7 @@ public class View extends JFrame{
 	}
 
 	public void construit(){
-		panel = new JPanelDraw(obstaclesTab);
-		super.setContentPane(panel);
+		super.setContentPane(jp);
 		super.setVisible(true);
 	}
 }

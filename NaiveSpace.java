@@ -1,15 +1,19 @@
-import java.util.Vector;
+import java.io.FileNotFoundException;
+
+import javax.swing.JPanel;
 
 
-public class NaiveSpace implements Space{
-	Vector <Shape>shape;
+public class NaiveSpace extends Space{
 	
-	public NaiveSpace(){
-		shape = new Vector<Shape> ();
+	ObstacleTable obstacles;
+	
+	public NaiveSpace(int levelNumber) throws FileNotFoundException{
+		super();
+		obstacles = new ObstacleTable("level-"+levelNumber+".txt");
 	}
-	@Override
-	public boolean function1() {
-		// TODO Auto-generated method stub
-		return false;
+
+	@Override	
+	public JPanel returnJPanel() {
+		return new JPanelDrawNaive(obstacles.getGrid(),ball);
 	}
 }

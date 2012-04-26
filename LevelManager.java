@@ -4,11 +4,10 @@ import java.io.FileNotFoundException;
 public class LevelManager {
 	
 	View view;
-	BoolArray boolArray;
-	
+	LevelState levelState;
 	public LevelManager() throws FileNotFoundException{
-		boolArray = new BoolArray("boolean.txt");
-		view = new View(boolArray.getGrid());
+		levelState = new LevelState(1);
+		view = new View(levelState.space.returnJPanel());
 	}
 	public void play(){
 		view.construit();

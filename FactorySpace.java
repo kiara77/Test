@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 public class FactorySpace {
 	private static final long serialVersionUID = 1L;
 	
@@ -5,10 +7,10 @@ public class FactorySpace {
 	public FactorySpace (boolean isNaive){
 		this.isNaive=isNaive;
 	}
-	public Space getConfigurationSpace(){
+	public Space getConfigurationSpace(int levelNumber) throws FileNotFoundException{
 		Space space = null;
 		if(isNaive){
-			space = new NaiveSpace();
+			space = new NaiveSpace(levelNumber);
 		}else{
 			space = new OptiSpace();
 		}
