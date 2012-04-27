@@ -13,5 +13,5 @@ public abstract class Space {
 		ball = new Ball();
 		shape=new Shape();
 	}
-	public abstract JPanel returnJPanel();
+	public abstract JPanelDraw returnJPanel();
 }

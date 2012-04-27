@@ -13,7 +13,7 @@ public class NaiveSpace extends Space{
 	}
 
 	@Override	
-	public JPanel returnJPanel() {
-		return new JPanelDrawNaive(obstacles.getGrid(),ball);
+	public JPanelDraw returnJPanel() {
+		return new JPanelDrawNaive(this);
 	}
 }

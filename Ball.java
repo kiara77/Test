@@ -17,6 +17,7 @@ public class Ball extends Shape {
 	}
 	
 	public void update(){
-		
+		x+=dirX;
+		y+=dirY;
 	}
 }

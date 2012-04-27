@@ -4,23 +4,23 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.Vector;
+
 
 import javax.swing.JPanel;
 
 
-public class JPanelDrawNaive extends JPanel implements MouseListener, MouseMotionListener {
-
-	boolean [][] tab;
-	Ball ball;
+public class JPanelDrawNaive extends JPanelDraw implements MouseListener, MouseMotionListener {
+	NaiveSpace space;
 	final int UNITE =25;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public JPanelDrawNaive(boolean [][] tab,Ball ball){
-		this.ball = ball;
-		this.tab = tab;
+	public JPanelDrawNaive(NaiveSpace space){
+		this.space =space;
 		super.setSize(1200,1200);
 		super.setPreferredSize(new Dimension(1200,1200));
 		this.addMouseListener(this);
@@ -29,10 +29,10 @@ public class JPanelDrawNaive extends JPanel implements MouseListener, MouseMotio
 	}
 	
 	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		for (int i=0;i<tab.length;i++){
-			for(int j=0; j<tab[0].length;j++){
-				if(tab[i][j]){
+	//	super.paintComponent(g);
+		for (int i=0;i<space.obstacles.getGrid().length;i++){
+			for(int j=0; j<space.obstacles.getGrid()[0].length;j++){
+				if(space.obstacles.getGrid()[i][j]){
 					g.setColor(Color.BLACK);
 					g.fillRect(i*UNITE, j*UNITE, UNITE, UNITE);
 				}
@@ -41,12 +41,12 @@ public class JPanelDrawNaive extends JPanel implements MouseListener, MouseMotio
 			}
 		}
 		g.setColor(Color.orange);
-		g.drawOval(ball.x,ball.y,ball.radius*UNITE,ball.radius*UNITE);
-		g.fillOval(ball.x,ball.y,ball.radius*UNITE,ball.radius*UNITE);
+		g.drawOval(space.ball.x,space.ball.y,space.ball.radius*UNITE,space.ball.radius*UNITE);
+		g.fillOval(space.ball.x,space.ball.y,space.ball.radius*UNITE,space.ball.radius*UNITE);
 	}
 	
 	public boolean[][] returnSetObstacle(){
-		return tab;
+		return space.obstacles.getGrid();
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {}
@@ -65,7 +65,7 @@ public class JPanelDrawNaive extends JPanel implements MouseListener, MouseMotio
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		tab[arg0.getX()/UNITE][arg0.getY()/UNITE]=true;
+		space.obstacles.getGrid()[arg0.getX()/UNITE][arg0.getY()/UNITE]=true;
 		repaint();
 	}
 
