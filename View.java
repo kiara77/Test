@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class View extends JFrame implements ActionListener{
 	Timer timer; 
-	int delay = 500;
+	int delay = 250;
 	
 	private static final long serialVersionUID = 1L;
 	protected GraphicsEnvironment graphicsEnv=GraphicsEnvironment.getLocalGraphicsEnvironment();//get local graphics environment	
@@ -41,13 +41,13 @@ public class View extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == timer)	{
 			if(ls.space.collide()){
-				System.out.println("Touche");
 				Point pointCollide = ls.space.collidePoint();
 				//TODO direction a modifier selon logique (0,1) test
-				ls.space.ball.setDir(0,10);
+				//FIXME ne pas modifier la direction dans l'affichage
+				ls.space.ball.setDir(0,1);
 			}
 			if(ls.space.ball.canUpdate(ls.space.largeur, ls.space.longueur, ls.space.UNITE)){
-				System.out.println("je decale");
+				//System.out.println("je decale");
 				ls.space.ball.update();
 			}
 			repaint();

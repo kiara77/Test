@@ -1,15 +1,15 @@
 public abstract class Space {
 	int longueur;
 	int largeur;
-	final int UNITE = 25;
+	final int UNITE = 5;
 	Obstacles obstacles;
 //	Vector <Shape> shape;
 	Ball ball;
 	
 	Space(){
 		ball = new Ball();
-		longueur=47;
-		largeur=21;
+		longueur=122;
+		largeur=137;
 //		shape=new Vector <Shape>();
 	}
 	public abstract JPanelDraw returnJPanel();
