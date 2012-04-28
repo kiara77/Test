@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 
 import javax.swing.*;
 
-import org.w3c.dom.ls.LSSerializer;
 public class View extends JFrame implements ActionListener{
 	Timer timer; 
 	int delay = 500;
@@ -21,18 +20,16 @@ public class View extends JFrame implements ActionListener{
 	protected int hauteur = (int)maxWindowBounds.getHeight();
 	protected int largeur = (int)maxWindowBounds.getWidth();
 	LevelState ls;
-	Space space;
 
 	public View(LevelState levelState) throws FileNotFoundException{
 		timer = new Timer(delay,this);
 		timer.start(); 
 		this.ls=levelState;
-		ls.space = levelState.spaceFromFile(1);
 		super.setTitle("Projet Long");
 		super.setSize(largeur,hauteur);
 		super.setResizable(true);
 		super.setBackground(Color.WHITE);
-		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void construit(){
@@ -43,9 +40,16 @@ public class View extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == timer)	{
-			//verifier collision
-			System.out.println("je decale");
-			ls.space.ball.update();
+			if(ls.space.collide()){
+				System.out.println("Touche");
+				Point pointCollide = ls.space.collidePoint();
+				//TODO direction a modifier selon logique (0,1) test
+				ls.space.ball.setDir(0,10);
+			}
+			if(ls.space.ball.canUpdate(ls.space.largeur, ls.space.longueur, ls.space.UNITE)){
+				System.out.println("je decale");
+				ls.space.ball.update();
+			}
 			repaint();
 			validate();
 		}		

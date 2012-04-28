@@ -1,22 +1,15 @@
-import java.io.FileNotFoundException;
-
-import javax.swing.JPanel;
+import java.util.Vector;
 
 
 public class Shape {
-	
+	Vector <Point> shape;
 
 	public Shape (){
 
 	}
-	
 	public BoundingBox getBoundingBox(){
 		BoundingBox b= new BoundingBox();
 		return b;
-	}
-	
-	public boolean collide(){
-		return false;
 	}
 
 }

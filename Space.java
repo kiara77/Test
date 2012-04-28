@@ -1,17 +1,20 @@
-import java.io.FileNotFoundException;
-import java.util.Vector;
-
-import javax.swing.JPanel;
-
-
 public abstract class Space {
-	
-	Shape shape;
+	int longueur;
+	int largeur;
+	final int UNITE = 25;
+	Obstacles obstacles;
+//	Vector <Shape> shape;
 	Ball ball;
 	
 	Space(){
 		ball = new Ball();
-		shape=new Shape();
+		longueur=47;
+		largeur=21;
+//		shape=new Vector <Shape>();
 	}
 	public abstract JPanelDraw returnJPanel();
+	
+	public abstract boolean collide();
+	
+	public abstract Point collidePoint();
 }

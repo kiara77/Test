@@ -17,25 +17,42 @@ public class ObstacleTable implements Obstacles{
 		int sizeX = Integer.parseInt(scan.nextLine());
 		int sizeY = Integer.parseInt(scan.nextLine());
 		grid = new boolean[sizeX][sizeY];
-		int i=0;
+		int j=0;
 		while(scan.hasNextLine()){
 			temp = scan.nextLine();
-			for(int j=0; j<temp.length(); j++){
-				grid[i][j] = (Integer.parseInt(temp.substring(j, j+1)))==1 ? true : false;
+			for(int i=0; i<temp.length(); i++){
+				grid[i][j] = (Integer.parseInt(temp.substring(i, i+1)))==1 ? true : false;
 			}
-			i++;
+			j++;
 		}
 	}
-	
+/*	Ne doit normalement plus etre utilise
 	public boolean[][] getGrid(){
 		return grid;
 	}
+*/
 	public boolean getCell(int i, int j){
 		return grid[i][j];
 	}
 	@Override
-	public void setObstacles() {
-		// TODO Auto-generated method stub
+	public void setObstacles(int x, int y) {
+		grid[x][y]=true;
 		
+	}
+
+	@Override
+	public boolean isObstacle(int x, int y) {
+		return grid[x][y];
+	}
+	@Override
+	public void printObstacle(){
+		for(int i=0; i<grid.length;i++){
+			for(int j=0; j<grid[0].length;j++){
+				if(grid[i][j]){
+					System.out.print("i:"+i+" j:"+j+"    ");
+				}
+			}
+		}
+		System.out.println();
 	}
 }

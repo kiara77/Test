@@ -31,6 +31,16 @@ public class JPanelDraw extends JPanel implements MouseListener, MouseMotionList
 		g.setColor(Color.orange);
 		g.drawOval(space.ball.x,space.ball.y,space.ball.radius*UNITE,space.ball.radius*UNITE);
 		g.fillOval(space.ball.x,space.ball.y,space.ball.radius*UNITE,space.ball.radius*UNITE);
+		for(int i=0; i<space.longueur;i++){
+			for(int j=0;j<space.largeur;j++){
+				if(space.obstacles.isObstacle(i,j)){
+					g.setColor(Color.BLACK);
+					g.fillRect(i*UNITE, j*UNITE, UNITE, UNITE);
+				}
+				g.setColor(Color.red);
+				g.drawRect(i*UNITE, j*UNITE, UNITE, UNITE);
+			}
+		}
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {}
@@ -49,6 +59,8 @@ public class JPanelDraw extends JPanel implements MouseListener, MouseMotionList
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
+		space.obstacles.setObstacles(arg0.getX()/UNITE,arg0.getY()/UNITE);
+		repaint();
 	}
 
 	@Override

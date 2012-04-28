@@ -10,7 +10,19 @@ public class OptiSpace extends Space{
 	}
 
 	@Override
-	public JPanel returnJPanel() {
+	public JPanelDraw returnJPanel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean collide() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Point collidePoint() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -7,7 +7,7 @@ public class Ball extends Shape {
 		x=5;
 		y=5;
 		radius=5;
-		dirX=1;
+		dirX=10;
 		dirY=0;
 	}
 
@@ -19,5 +19,8 @@ public class Ball extends Shape {
 	public void update(){
 		x+=dirX;
 		y+=dirY;
+	}
+	public boolean canUpdate(int largeur, int longueur, int UNITE){
+		return (x+dirX+radius<=longueur*UNITE && y+dirY<=(largeur-radius)*UNITE);
 	}
 }
