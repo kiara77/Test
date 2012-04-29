@@ -7,23 +7,23 @@ import javax.swing.Timer;
 
 public class LevelManager implements ActionListener{
 	Timer timer; 
-	int delay = 1050;
+	int delay = 550;
 	View view;
 	LevelState levelState;
 	GameRules gameRules;
-	
-	public LevelManager() throws FileNotFoundException{
-		levelState = new LevelState(2);
+	public LevelManager(int numLevel) throws FileNotFoundException{
+		levelState = new LevelState(numLevel);
 		view = new View(levelState);
 		gameRules = new GameRules();
 		timer = new Timer(delay,this);
 		timer.start(); 
 	}
-	public void play(){
-		view.construit();
-		while(!gameRules.gameOver(levelState)){
+	public void playLevel(){
+		view.construit();	
+		while(!gameRules.gameOver(levelState)&&!levelState.isFinish()){
 			
 		}
+		System.out.println("niveau fini");
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

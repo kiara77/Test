@@ -28,8 +28,9 @@ public class JPanelDraw extends JPanel implements MouseListener, MouseMotionList
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.setColor(Color.orange);
+		g.setColor(Color.blue);
 		g.drawOval((space.ball.getX()-space.ball.getRadius())*UNITE,(space.ball.getY()-space.ball.getRadius())*UNITE,space.ball.getRadius()*2*UNITE,space.ball.getRadius()*2*UNITE);
+		g.setColor(Color.orange);
 		g.fillOval((space.ball.getX()-space.ball.getRadius())*UNITE,(space.ball.getY()-space.ball.getRadius())*UNITE,space.ball.getRadius()*2*UNITE,space.ball.getRadius()*2*UNITE);
 		//TODO vecteur vitesse, a supprimer
 		g.setColor(Color.green);
@@ -45,6 +46,8 @@ public class JPanelDraw extends JPanel implements MouseListener, MouseMotionList
 				g.drawRect(i*UNITE, j*UNITE, UNITE, UNITE);
 			}
 		}
+		g.setColor(Color.CYAN);
+		g.fillRect(space.winPoint.getX()*UNITE,space.winPoint.getY()*UNITE, UNITE, UNITE);
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {}
@@ -63,7 +66,26 @@ public class JPanelDraw extends JPanel implements MouseListener, MouseMotionList
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		space.obstacles.setObstacles(arg0.getX()/UNITE,arg0.getY()/UNITE);
+		
+		if(arg0.getX()/UNITE<=space.longueur && arg0.getY()/UNITE<=space.largeur
+		&& (space.distance2point(space.ball.getX(),space.ball.getY(),arg0.getX()/UNITE,arg0.getY()/UNITE)>space.ball.getRadius())){
+			space.obstacles.setObstacles(arg0.getX()/UNITE,arg0.getY()/UNITE);
+		}
+		
+		if(arg0.getX()/UNITE<=space.longueur && (arg0.getY()+UNITE)/UNITE<=space.largeur
+		&& (space.distance2point(space.ball.getX(),space.ball.getY(),arg0.getX()/UNITE,arg0.getY()/UNITE)>space.ball.getRadius())){
+			space.obstacles.setObstacles(arg0.getX()/UNITE,(arg0.getY()+UNITE)/UNITE);
+		}
+		
+		if((arg0.getX()+UNITE)/UNITE<=space.longueur && arg0.getY()/UNITE<=space.largeur
+		&& (space.distance2point(space.ball.getX(),space.ball.getY(),arg0.getX()/UNITE,arg0.getY()/UNITE)>space.ball.getRadius())){
+			space.obstacles.setObstacles((arg0.getX()+UNITE)/UNITE,arg0.getY()/UNITE);
+		}
+		
+		if((arg0.getX()+UNITE)/UNITE<=space.longueur && (arg0.getY()+UNITE)/UNITE<=space.largeur
+		&& (space.distance2point(space.ball.getX(),space.ball.getY(),arg0.getX()/UNITE,arg0.getY()/UNITE)>space.ball.getRadius())){
+			space.obstacles.setObstacles((arg0.getX()+UNITE)/UNITE,(arg0.getY()+UNITE)/UNITE);
+		}
 		repaint();
 	}
 

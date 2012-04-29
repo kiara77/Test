@@ -4,11 +4,11 @@ public class Ball extends Shape {
 	
 	public Ball(){
 		//TODO a modifier en fonction
-		x=10;
-		y=10;
+		x=100;
+		y=100;
 		radius=5;
 		dirX=0;
-		dirY=1;
+		dirY=-1;
 	}
 
 	public void setDir(int x,int y){

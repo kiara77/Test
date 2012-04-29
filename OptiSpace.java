@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -6,7 +7,8 @@ import javax.swing.JPanel;
 public class OptiSpace extends Space{
 
 	ObstacleVector obstacles;
-	public OptiSpace(){
+	public OptiSpace(int levelNumber) throws FileNotFoundException{
+		super(levelNumber);
 	}
 
 	@Override

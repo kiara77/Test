@@ -14,6 +14,10 @@ public class ObstacleTable implements Obstacles{
 		FileInputStream file = new FileInputStream(filename); 
 		Scanner scan = new Scanner(file);
 		String temp;
+		//Position pixel Gagnant
+		Integer.parseInt(scan.nextLine());
+		Integer.parseInt(scan.nextLine());
+		//
 		int sizeX = Integer.parseInt(scan.nextLine());
 		int sizeY = Integer.parseInt(scan.nextLine());
 		grid = new boolean[sizeX][sizeY];

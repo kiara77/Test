@@ -13,7 +13,7 @@ public class FactorySpace {
 		if(isNaive){
 			return new NaiveSpace(levelNumber);
 		}else{
-			return new OptiSpace();
+			return new OptiSpace(levelNumber);
 		}
 	}
 }
