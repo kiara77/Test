@@ -7,7 +7,7 @@ public class Ball extends Shape {
 		x=10;
 		y=10;
 		radius=5;
-		dirX=1;
+		dirX=0;
 		dirY=1;
 	}
 
@@ -15,8 +15,16 @@ public class Ball extends Shape {
 		dirX=x;
 		dirY=y;
 	}
-	
+	public void setDir(Point dir){
+		dirX=dir.getX();
+		dirY=dir.getY();
+	}
+	public Point determineDir(){
+		//TODO
+		return new Point(0,1);
+	}
 	public void update(){
+//		System.out.println("la");
 		x+=dirX;
 		y+=dirY;
 	}

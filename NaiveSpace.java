@@ -6,7 +6,8 @@ import javax.swing.JPanel;
 public class NaiveSpace extends Space{
 	public NaiveSpace(int levelNumber) throws FileNotFoundException{
 		super();
-		obstacles = new ObstacleTable("level-"+levelNumber+".txt");
+		FactoryObstacles factObstacles = new FactoryObstacles(true);// write false to use FactoryVector
+		obstacles = factObstacles.getConfigurationObstacle(levelNumber);
 	}
 
 	@Override	
