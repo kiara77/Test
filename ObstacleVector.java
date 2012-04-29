@@ -22,4 +22,10 @@ public class ObstacleVector extends Shape implements Obstacles{
 		
 	}
 
+	@Override
+	public Point collisionNewDirBall(Ball ball, Point pointCollide) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -8,4 +8,6 @@ public interface Obstacles {
 	public boolean isObstacle(int x, int y);
 	
 	public void printObstacle();
+	
+	public Point collisionNewDirBall(Ball ball, Point pointCollide);
 }

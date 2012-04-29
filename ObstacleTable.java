@@ -55,4 +55,39 @@ public class ObstacleTable implements Obstacles{
 		}
 		System.out.println();
 	}
+	@Override
+	public Point collisionNewDirBall(Ball ball, Point pointCollide){
+		System.out.println("Point Collide : "+pointCollide.getX()+" "+pointCollide.getY());
+		//Cas 1
+		if ((ball.isDir(1,0)||ball.isDir(1,1)||ball.isDir(1,-1)) &&
+		 (pointCollide.getX()>ball.getX())&&(pointCollide.getY()==ball.getY()))
+				return new Point(-1,0);
+		if ((ball.isDir(-1,1)||ball.isDir(-1,0)||ball.isDir(-1,-1)) &&
+			(pointCollide.getX()<ball.getX())&&(pointCollide.getY()==ball.getY()))
+				return new Point(1,0);
+		//Cas 2
+		if ((ball.isDir(1,1)||ball.isDir(0,1)||ball.isDir(-1,1)) &&
+			(pointCollide.getX()==ball.getX())&&(pointCollide.getY()>ball.getY()))
+				return new Point(0,-1);
+		if ((ball.isDir(1,-1)||ball.isDir(0,-1)||ball.isDir(-1,-1)) &&
+			(pointCollide.getX()==ball.getX())&&(pointCollide.getY()<ball.getY()))
+				return new Point(0,1);		
+		//Cas 3
+		if ((ball.isDir(1,0)||ball.isDir(1,1)||ball.isDir(0,1)) &&
+		 (pointCollide.getX()>ball.getX())&&(pointCollide.getY()>ball.getY()))
+				return new Point(-1,-1);
+		if ((ball.isDir(-1,1)||ball.isDir(-1,0)||ball.isDir(0,-1)) &&
+			(pointCollide.getX()<ball.getX())&&(pointCollide.getY()<ball.getY()))
+				return new Point(1,1);
+		//Cas 4
+		if ((ball.isDir(-1,1)||ball.isDir(0,1)||ball.isDir(-1,0)) &&
+			(pointCollide.getX()<ball.getX())&&(pointCollide.getY()>ball.getY()))
+				return new Point(1,-1);
+		if ((ball.isDir(1,-1)||ball.isDir(0,-1)||ball.isDir(1,0)) &&
+			(pointCollide.getX()>ball.getX())&&(pointCollide.getY()<ball.getY()))
+				return new Point(-1,1);				
+
+		System.out.println("probleme new direction Ball");
+		return new Point(-1,-1);
+	}
 }

@@ -1,6 +1,6 @@
 
 public class Ball extends Shape {
-	int x,y,radius,dirX,dirY;
+	private int x,y,radius,dirX,dirY;
 	
 	public Ball(){
 		//TODO a modifier en fonction
@@ -31,4 +31,41 @@ public class Ball extends Shape {
 	public boolean canUpdate(int largeur, int longueur, int UNITE){
 		return (x+dirX+radius<=longueur*UNITE && y+dirY<=(largeur-radius)*UNITE);
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getRadius() {
+		return radius;
+	}
+/*
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+*/
+	public int getDirX() {
+		return dirX;
+	}
+
+	public int getDirY() {
+		return dirY;
+	}
+	
+	public boolean isDir(int x, int y){
+		return x==dirX && y==dirY;
+	}
+
 }

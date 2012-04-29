@@ -29,11 +29,11 @@ public class JPanelDraw extends JPanel implements MouseListener, MouseMotionList
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.orange);
-		g.drawOval((space.ball.x-space.ball.radius)*UNITE,(space.ball.y-space.ball.radius)*UNITE,space.ball.radius*2*UNITE,space.ball.radius*2*UNITE);
-		g.fillOval((space.ball.x-space.ball.radius)*UNITE,(space.ball.y-space.ball.radius)*UNITE,space.ball.radius*2*UNITE,space.ball.radius*2*UNITE);
+		g.drawOval((space.ball.getX()-space.ball.getRadius())*UNITE,(space.ball.getY()-space.ball.getRadius())*UNITE,space.ball.getRadius()*2*UNITE,space.ball.getRadius()*2*UNITE);
+		g.fillOval((space.ball.getX()-space.ball.getRadius())*UNITE,(space.ball.getY()-space.ball.getRadius())*UNITE,space.ball.getRadius()*2*UNITE,space.ball.getRadius()*2*UNITE);
 		//TODO vecteur vitesse, a supprimer
 		g.setColor(Color.green);
-		g.drawLine(space.ball.x*UNITE, space.ball.y*UNITE, (space.ball.x+space.ball.dirX)*UNITE, (space.ball.y+space.ball.dirY)*UNITE);
+		g.drawLine(space.ball.getX()*UNITE, space.ball.getY()*UNITE, (space.ball.getX()+space.ball.getDirX())*UNITE, (space.ball.getY()+space.ball.getDirY())*UNITE);
 		//TODO end
 		for(int i=0; i<space.longueur;i++){
 			for(int j=0;j<space.largeur;j++){
